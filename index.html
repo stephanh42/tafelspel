@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+  </style>
+<title>Het Tafelspel</title>
+</head>
+<body>
+  <h1>Het Tafelspel</h1>
+  <div style="font-size:30px">
+  <form id="form">
+  <span id="vraag">Hoeveel is 3 x 4?</span><br>
+  <input type="text" id="antwoord" name="antwoord">
+   <input type="submit" value="Klopt het?">
+  </form>
+  <span id="resultaat"></span>
+  </div>
+  <script>
+function randomInt(n) {
+  return (Math.random() * n)|0;
+}
+
+let n, m;
+
+const form = document.getElementById('form');
+const vraagSpan = document.getElementById('vraag');
+const antwoordInput = document.getElementById('antwoord');
+const resultaatSpan = document.getElementById('resultaat');
+
+function nieuweVraag() {
+  n = randomInt(10)+1;
+  m = randomInt(10)+1;
+  vraagSpan.innerHTML = `Hoeveel is ${n} x ${m}?`
+  resultaatSpan.innerHTML = '';
+  antwoord.value = '';
+}
+
+function processForm(e) {
+  e.preventDefault();
+  const antwoord = Number.parseInt(antwoordInput.value);
+  if (antwoord === n * m) {
+    resultaatSpan.innerHTML = 'Goed!';
+    resultaatSpan.style.color = 'green';
+    setTimeout(nieuweVraag, 1000);
+  } else {
+    resultaatSpan.innerHTML = 'Fout! probeer het nog eens.';
+    resultaatSpan.style.color = 'red';
+  }
+
+  return false;
+}
+
+nieuweVraag();
+form.addEventListener('submit', processForm);
+  </script>
+</body>
+</html>
