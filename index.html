@@ -10,10 +10,14 @@
   <h1>Het Tafelspel</h1>
   <div style="font-size:30px">
   <form id="form">
-  <input type="checkbox" id="tafels68"> <label>Alleen tafels van 6 tot 8.</label><br>
-  <span id="vraag">Hoeveel is 3 x 4?</span><br>
-  <input type="text" id="antwoord" name="antwoord">
+  <p>
+  <input type="checkbox" id="tafels68"> <label for="tafels68">Alleen tafels van 6 tot 8.</label>
+  </p>
+  <p>
+  <label for="antwoord"><span id="vraag">Hoeveel is 3 x 4?</span></label>
+  <input type="text" autocomplete="off" id="antwoord" name="antwoord">
    <input type="submit" value="Klopt het?">
+   </p>
   </form>
   <span id="resultaat"></span>
   </div>
