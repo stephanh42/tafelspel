@@ -10,6 +10,7 @@
   <h1>Het Tafelspel</h1>
   <div style="font-size:30px">
   <form id="form">
+  <input type="checkbox" id="tafels68"> <label>Alleen tafels van 6 tot 8.</label><br>
   <span id="vraag">Hoeveel is 3 x 4?</span><br>
   <input type="text" id="antwoord" name="antwoord">
    <input type="submit" value="Klopt het?">
@@ -27,9 +28,14 @@ const form = document.getElementById('form');
 const vraagSpan = document.getElementById('vraag');
 const antwoordInput = document.getElementById('antwoord');
 const resultaatSpan = document.getElementById('resultaat');
+const tafels68 = document.getElementById('tafels68');
 
 function nieuweVraag() {
-  n = randomInt(10)+1;
+  if (tafels68.checked) {
+    n = randomInt(3)+6;
+  } else {
+    n = randomInt(10)+1;
+  }
   m = randomInt(10)+1;
   vraagSpan.innerHTML = `Hoeveel is ${n} x ${m}?`
   resultaatSpan.innerHTML = '';
@@ -53,6 +59,7 @@ function processForm(e) {
 
 nieuweVraag();
 form.addEventListener('submit', processForm);
+tafels68.addEventListener('change', nieuweVraag);
   </script>
 </body>
 </html>
